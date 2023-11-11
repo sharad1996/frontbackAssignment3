@@ -2,10 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const router = require("./routes/index");
-
+const cors = require("cors");
 const app = express();
-
 const PORT = 8081;
+
+app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -24,11 +25,11 @@ app.use((error, req, res, next) => {
 
 mongoose
   .connect(
-    "mongodb+srv://sharadkumarw23:<password>@cluster0.a0ntp2h.mongodb.net/",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
+    "mongodb+srv://NewUser:Test12345@cluster0.a0ntp2h.mongodb.net/"
+    // {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // }
   )
   .then(() => {
     console.log("Connected to the DB");
